@@ -1,0 +1,100 @@
+
+
+## Math 181B HW 5 ##
+
+## Spencer Ochs, A10259423 ##
+
+## Problem 1 ##
+pre.statistics <- c(17,26,16,28,23,22,29,26,38,21,27,45,27,32,21,26)
+post.statistics <- c(21,26,19,26,30,39,43,31,26,14,0,12,41,35,44,20)
+
+# use paired since measurements are on same individuals.
+# Since want to know how stats class affects students, use two-sided
+
+# Null Hypothesis: mean of pre test equals the mean of post test
+# Alternative: This is not the case (two-sided)
+t.test(pre.statistics,post.statistics, paired=TRUE, alternative="two.sided")
+# p-value = 0.9607 so cannot reject the null.
+
+# Removing the test that was lost gives
+correct.pre <- c(17,26,16,28,23,22,29,26,38,21,45,27,32,21,26)
+correct.post <- c(21,26,19,26,30,39,43,31,26,14,12,41,35,44,20)
+# still paired data so get:
+t.test(correct.pre,correct.post, paired=TRUE, alternative="two.sided")
+# p-value = 0.5773 still cannot reject the null
+
+# b) "improves" means that we test that there is an increase in the mean test scores after 
+# taking the stats course. 
+# H_0: no increase in mean test score, vs. H_1: mean.pre < mean.post
+
+# uncorrected data:
+t.test(pre.statistics,post.statistics, paired=TRUE, alternative="greater")
+# p-value = 0.5196 so cannot reject the null that test scores haven't increased
+
+# corrected data
+t.test(correct.pre,correct.post, paired=TRUE, alternative="greater")
+# p-value = 0.7113 gives even higher p-value so still cannot reject the null, so nothing
+# changed in terms of being able to reject the null.
+
+
+## Problem 2 ##
+
+# in this problem just set up the likelihood function, as we did in class, and solve the derivatives 
+# of L when equal to 0.
+
+# a) #
+#    L = sum((y_i -(a + b*x_i + c*sin(x_x))^2)
+# solve for a, b, and c by taking the respective derivatives of L
+
+# b) #
+#    L = sum((y_i - (e^a * e^(b*e^x_i)))^2)
+# likewise solve for a and b by taking their respective derivatives.
+
+
+## Problem 3 ##
+playbill <- read.csv("http://www.stat.tamu.edu/~sheather/book/docs/datasets/playbill.csv",header=TRUE)
+attach(playbill)
+
+plot(LastWeek,CurrentWeek) # looks linear
+
+fit <- lm(LastWeek~CurrentWeek, playbill)
+summary(fit)
+
+error.std <- rstandard(fit)
+plot(LastWeek, error.std, main="Residuals vs. LastWeek")
+# supposed to delete outliers that are outside [-2,2] on error.std
+
+fitted <- predict(fit)
+plot(fitted,error.std, main="Residuals vs. Fitted")
+
+# check for normality of the errors 
+install.packages("nortest"); library(nortest)
+pearson.test(error.std) # p-value = 0.8364
+qqnorm(error.std); qqline(error.std) # so errors are normal
+#after checking fit by plotting the errors we see that a linear model is a good fit.
+
+
+## Problem 4 ##
+# The assumed population line is linear, so we assume a linear model. Each observation will
+# have some measurement error associated with it, call e_i for ith observation.
+# to find d and c we just fit a linear model to the ten (x,y) points then get the mle 
+# estimates for the slope and y-intercept and assign them to d and c respectively.
+
+## Problem 5 ##
+# a) Find the equation of the least squares straight line for the plant cover diversity/bird 
+# species diversity data given in Question 8.2.11.
+plant.cover <- c(0.9,0.76,1.67,1.44,0.2,0.16,1.12,1.04,0.48,1.33,1.10,1.56,1.15)
+bird.species <- c(1.8,1.36,2.92,2.61,0.42,0.49,1.9,2.38,1.24,2.8,2.41,2.8,2.16)
+area <- 1:13
+diversity <- cbind(area, plant.cover, bird.species)
+
+fit.diversity <- lm(bird.species~plant.cover)
+# Y_i = 1.7026*X_i + 0.2546
+
+# b) Make the residual plot associated with the least squares ?t asked for in part (a). 
+# Based on the appearance of the residual plot, would you conclude that ?tting a
+# straight line to these data is appropriate? Explain.
+plot(plant.cover, fit.diversity$residuals); abline(0,0)
+# looks like no pattern
+plot(plant.cover,bird.species); abline(a=0.2546,b=1.7026)
+# so can tell that linear model is a good fit.
