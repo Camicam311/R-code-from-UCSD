@@ -1,0 +1,67 @@
+"Notes"	"Birth Weight"	"Birth Weight Code"	Births
+	"499 grams or less"	"01"	5980
+	"500 - 999 grams"	"02"	22015
+	"1000 - 1499 grams"	"03"	29846
+	"1500 - 1999 grams"	"04"	63427
+	"2000 - 2499 grams"	"05"	204295
+	"2500 - 2999 grams"	"06"	744181
+	"3000 - 3499 grams"	"07"	1566755
+	"3500 - 3999 grams"	"08"	1055004
+	"4000 - 4499 grams"	"09"	262997
+	"4500 - 4999 grams"	"10"	36706
+	"5000 - 8165 grams"	"11"	4216
+	"Not stated"	"12"	3964
+"Total"			3999386
+"---"
+"Dataset: Natality, 2007-2010"
+"Query Parameters:"
+"Title:"
+"Age of Mother: All"
+"Anencephalus: All"
+"Birthplace: All"
+"Birth Weight: All"
+"Chronic Hypertension: All"
+"Cleft Lip / Palate: All"
+"Delivery Method: All"
+"Diabetes: All"
+"Down Syndrome: All"
+"Eclampsia: All"
+"Education: All"
+"Gender: All"
+"Gestational Age Group1: All"
+"Gestational Age Group2: All"
+"Gestational Age Weekly: All"
+"Hispanic Origin: All"
+"Live Birth Order: All"
+"Marital Status: All"
+"Medical Attendant: All"
+"Month: All"
+"Month Prenatal Care Began: All"
+"Omphalocele / Gastroschisis: All"
+"Plurality or Multiple Birth: All"
+"Pregnancy-associated Hypertension: All"
+"Race: All"
+"Spina Bifida / Meningocele: All"
+"States: All"
+"Tobacco Use: All"
+"Weekday: All"
+"Year: 2010"
+"Group By: Birth Weight"
+"Show Totals: True"
+"Show Zero Values: False"
+"Show Suppressed: False"
+"Calculate Rates Per: 1,000"
+"Population Option: No populations shown because rates were not selected."
+"---"
+"Help: See http://wonder.cdc.gov/wonder/help/Natality.html for more information."
+"---"
+"Query Date: Apr 24, 2013 8:45:00 PM"
+"---"
+"Suggested Citation: United States Department of Health and Human Services (US DHHS), Centers for Disease Control and Prevention"
+"(CDC), National Center for Health Statistics (NCHS), Division of Vital Statistics, Natality public-use data 2007-2010, on CDC"
+"WONDER Online Database, December 2012. Accessed at http://wonder.cdc.gov/natality-current.html on Apr 24, 2013 8:45:00 PM"
+"---"
+Caveats:
+"1. Each birth record represents one living baby."
+"2. Data are Suppressed when the data meet the criteria for confidentiality constraints. More information:"
+"http://wonder.cdc.gov/wonder/help/Natality.html#Assurance of Confidentiality."
